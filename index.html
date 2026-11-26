@@ -40,21 +40,24 @@ button{font-family:inherit}
 @media(max-width:480px){.pill a{padding:7px 11px;font-size:.78rem}}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:100px 0 50px}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 0 50px;overflow:hidden}
+.hero::before{content:"";position:absolute;width:520px;height:520px;right:-140px;top:8%;background:radial-gradient(circle,rgba(43,127,255,.28),transparent 65%);pointer-events:none}
+.hero::after{content:"";position:absolute;width:380px;height:380px;left:-120px;bottom:5%;background:radial-gradient(circle,rgba(245,139,36,.14),transparent 65%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
 .hero .wrap{display:flex;align-items:center;justify-content:center;gap:44px;flex-wrap:wrap-reverse}
 .ht{flex:1 1 340px}
 .tag{display:inline-flex;align-items:center;gap:8px;color:var(--accent);border:1px solid var(--accent);padding:3px 14px;border-radius:99px;font-size:.8rem;font-weight:600;margin-bottom:14px}
 .tag::before{content:"";width:8px;height:8px;border-radius:50%;background:#3ddc84;animation:bl 1.6s infinite}
 @keyframes bl{50%{opacity:.25}}
 h1{font-size:clamp(2.3rem,8vw,3.8rem);line-height:1.08;font-weight:800}
-h1 .bl{color:var(--blue);display:block}
+h1 .bl{display:block;background:linear-gradient(90deg,#5aa2ff,#f58b24);-webkit-background-clip:text;background-clip:text;color:transparent}
 .role{font-size:1.15rem;color:var(--accent);font-weight:600;margin-top:10px;min-height:1.8em;transition:opacity .3s}
 .ht p{color:var(--muted);margin:14px 0 26px;max-width:480px}
 .btns{display:flex;gap:12px;flex-wrap:wrap}
 .btn{padding:12px 24px;border-radius:12px;font-weight:600;font-size:.92rem;transition:.2s;display:inline-block;cursor:pointer;border:0}
 .btn.p{background:var(--blue);color:#fff}.btn.p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(43,127,255,.45)}
 .btn.s{border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.04)}.btn.s:hover{border-color:var(--accent);color:var(--accent)}
-.pv{width:min(330px,80vw);aspect-ratio:1;border-radius:30px;overflow:hidden;position:relative;border:2px solid rgba(245,139,36,.65);box-shadow:0 0 70px rgba(43,127,255,.35);cursor:pointer;flex:none;background:#0a1740;-webkit-tap-highlight-color:transparent}
+.pv{width:min(330px,80vw);aspect-ratio:1;border-radius:30px;overflow:hidden;position:relative;cursor:pointer;flex:none;background:#0a1740;-webkit-tap-highlight-color:transparent}
 .pv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .pv .top{clip-path:circle(0px at 50% 50%);transition:clip-path .3s}
 .pv .top.alt{filter:sepia(1) hue-rotate(-20deg) saturate(3.2) contrast(1.1) brightness(1.05)}
@@ -129,6 +132,29 @@ footer{text-align:center;padding:26px 20px;color:var(--muted);font-size:.82rem;b
 .wa{position:fixed;right:18px;bottom:18px;z-index:40;background:#25d366;color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 6px 18px rgba(0,0,0,.45)}
 .rv{opacity:0;transform:translateY(24px);transition:.7s}.rv.on{opacity:1;transform:none}
 
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
+.pcol{display:flex;flex-direction:column;align-items:center;gap:14px}
+.pvw{padding:3px;border-radius:33px;background:conic-gradient(from var(--a),#2b7fff,#f58b24,#2b7fff);animation:spin 5s linear infinite;box-shadow:0 0 70px rgba(43,127,255,.35)}
+@keyframes spin{to{--a:360deg}}
+.glass{transition:.25s}.row:hover,.ti:hover,.stat:hover{border-color:rgba(43,127,255,.55)}
+.tl{position:relative;padding-left:26px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--blue),var(--accent))}
+.ti{position:relative;margin-bottom:14px;padding:14px 16px}
+.ti::before{content:"";position:absolute;left:-26px;top:20px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px #0a1740,0 0 14px var(--accent)}
+.ti b{display:block;font-size:.97rem}.ti .m{color:var(--accent);font-size:.78rem;font-weight:600}.ti small{color:var(--muted);font-size:.84rem;display:block;margin-top:2px}
+.skl{padding:26px;max-width:760px;margin:0 auto}
+.sk{margin-bottom:20px}.sk:last-of-type{margin-bottom:0}
+.sk .h{display:flex;justify-content:space-between;font-size:.93rem;margin-bottom:8px;font-weight:500}.sk .h b{color:var(--accent)}
+.bar{height:11px;background:rgba(255,255,255,.1);border-radius:11px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--accent));border-radius:11px;transition:width 1.4s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 14px rgba(43,127,255,.6)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:24px}
+.chips span{background:var(--glass);border:1px solid var(--line);padding:7px 18px;border-radius:99px;font-size:.85rem}
+.adm{display:none}body.isadm .adm{display:inline-block}
+.btn.sm{padding:9px 16px;font-size:.82rem}
+.admrow{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:16px}
+.fab{position:fixed;left:14px;bottom:18px;z-index:40;background:rgba(10,20,50,.78);backdrop-filter:blur(10px);border:1px solid var(--line);color:var(--text);padding:10px 16px;border-radius:99px;font-size:.82rem;cursor:pointer;font-weight:600}
+.fab:hover{border-color:var(--accent);color:var(--accent)}
+#toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);z-index:300;background:#0c1838;border:1px solid var(--line);padding:10px 18px;border-radius:12px;font-size:.85rem;display:none;max-width:90vw;text-align:center}
 /* ADMIN */
 .md{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:150;padding:16px}
 .md.on{display:flex}
@@ -159,6 +185,7 @@ footer{text-align:center;padding:26px 20px;color:var(--muted);font-size:.82rem;b
 <nav class="pill" id="pill">
   <a href="#home" class="on">Home</a>
   <a href="#tentang">About</a>
+  <a href="#skills">Skills</a>
   <a href="#portofolio">Portfolio</a>
   <a href="#kontak">Contact</a>
 </nav>
@@ -174,10 +201,16 @@ footer{text-align:center;padding:26px 20px;color:var(--muted);font-size:.82rem;b
       <a class="btn s" href="#kontak">Hubungi Saya</a>
     </div>
   </div>
-  <div class="pv" id="pv">
-    <img id="foto" src="foto.jpg" alt="Foto Sunandar">
-    <img id="foto2" class="top" src="foto2.jpg" alt="">
-    <span class="hint">Sentuh foto ✨</span>
+  <div class="pcol">
+    <div class="pvw"><div class="pv" id="pv">
+      <img id="foto" src="foto.jpg" alt="Foto Sunandar">
+      <img id="foto2" class="top" src="foto2.jpg" alt="">
+      <span class="hint">Sentuh foto ✨</span>
+    </div></div>
+    <div class="admrow">
+      <button class="btn s sm adm" id="aP">✏️ Ganti foto profil</button>
+      <button class="btn s sm adm" id="aP2">✨ Foto kedua</button>
+    </div>
   </div>
 </div></header>
 
@@ -194,6 +227,7 @@ footer{text-align:center;padding:26px 20px;color:var(--muted);font-size:.82rem;b
       <button id="mnext" aria-label="Berikutnya">⏭</button>
     </div>
     <div class="pl" id="plist"></div>
+    <div style="text-align:center;margin-top:12px"><button class="btn s sm adm" id="aM">➕ Tambah lagu</button></div>
   </div>
 </div></section>
 
@@ -208,9 +242,11 @@ footer{text-align:center;padding:26px 20px;color:var(--muted);font-size:.82rem;b
     </div>
     <div>
       <h3>💼 Pengalaman</h3>
-      <div class="row glass"><div class="ic">🍽️</div><div><b>Waiter</b><small>Kantin Universitas Esa Unggul · 2026</small></div></div>
-      <div class="row glass"><div class="ic">🍗</div><div><b>Penjual / Usaha Kuliner</b><small>Nasi ayam dan sejenisnya · 2025</small></div></div>
-      <div class="row glass"><div class="ic">🔧</div><div><b>Pekerja Bengkel Modifikasi</b><small>Bengkel Arokboejhat · 2024</small></div></div>
+      <div class="tl">
+        <div class="ti glass"><span class="m">2026</span><b>Waiter</b><small>Kantin Universitas Esa Unggul. Melayani pelanggan, mencatat pesanan, menjaga kecepatan layanan.</small></div>
+        <div class="ti glass"><span class="m">2025</span><b>Penjual / Usaha Kuliner</b><small>Nasi ayam dan sejenisnya. Membantu penjualan, mengatur stok bahan, menjaga kualitas produk.</small></div>
+        <div class="ti glass"><span class="m">2024</span><b>Pekerja Bengkel Modifikasi Mobil</b><small>Bengkel Arokboejhat. Pengelasan, pendempulan, dan perbaikan bodi kendaraan.</small></div>
+      </div>
     </div>
   </div>
   <div class="stats" id="stats">
@@ -221,6 +257,19 @@ footer{text-align:center;padding:26px 20px;color:var(--muted);font-size:.82rem;b
   </div>
 </div></section>
 
+<section id="skills"><div class="wrap rv">
+  <h2 class="t">Skills</h2>
+  <p class="sub">Keterampilan teknis dan pelayanan dari pengalaman kerja langsung.</p>
+  <div class="skl glass">
+    <div class="sk"><div class="h"><span>🔥 Pengelasan dasar</span><b>80%</b></div><div class="bar"><i data-w="80"></i></div></div>
+    <div class="sk"><div class="h"><span>🚗 Pendempulan &amp; finishing</span><b>85%</b></div><div class="bar"><i data-w="85"></i></div></div>
+    <div class="sk"><div class="h"><span>🛠️ Alat kerja bengkel</span><b>80%</b></div><div class="bar"><i data-w="80"></i></div></div>
+    <div class="sk"><div class="h"><span>🤝 Pelayanan pelanggan</span><b>85%</b></div><div class="bar"><i data-w="85"></i></div></div>
+    <div class="sk"><div class="h"><span>👥 Kerja tim &amp; shift</span><b>90%</b></div><div class="bar"><i data-w="90"></i></div></div>
+  </div>
+  <div class="chips"><span>Teliti</span><span>Disiplin</span><span>Cepat belajar</span><span>Siap bekerja shift</span></div>
+</div></section>
+
 <section id="portofolio"><div class="wrap rv">
   <h2 class="t">Portfolio</h2>
   <p class="sub">Hasil kerja, sertifikat, penghargaan, dan keahlian saya.</p>
@@ -228,21 +277,21 @@ footer{text-align:center;padding:26px 20px;color:var(--muted);font-size:.82rem;b
     <button class="on" data-t="t1">🛠️ Hasil Kerja</button>
     <button data-t="t2">📜 Sertifikat</button>
     <button data-t="t3">🏆 Penghargaan</button>
-    <button data-t="t4">⚙️ Keahlian</button>
+    <button data-t="t4">⚙️ Layanan</button>
   </div>
-  <div class="tp on" id="t1"><div class="gal" id="gGal"></div><div class="empty" id="eGal">Foto hasil kerja akan segera ditambahkan.</div></div>
-  <div class="tp" id="t2"><div class="gal" id="gCert"></div><div class="empty" id="eCert">Sertifikat akan segera ditambahkan.</div></div>
+  <div class="tp on" id="t1"><div class="admrow"><button class="btn p sm adm" id="aG">➕ Tambah foto hasil kerja</button></div><div class="gal" id="gGal"></div><div class="empty" id="eGal">Foto hasil kerja akan segera ditambahkan.</div></div>
+  <div class="tp" id="t2"><div class="admrow"><button class="btn p sm adm" id="aC">➕ Tambah sertifikat</button></div><div class="gal" id="gCert"></div><div class="empty" id="eCert">Sertifikat akan segera ditambahkan.</div></div>
   <div class="tp" id="t3">
     <div class="aw glass"><div class="ic">🏅</div><h3>Anggota OSIS Terbaik</h3><div class="m">SMAIT Mahmudiah · 2024</div><p>Penghargaan atas komitmen, kedisiplinan, dan tanggung jawab dalam menjalankan tugas organisasi.</p></div>
   </div>
   <div class="tp" id="t4">
     <div class="tiles">
-      <div class="tile glass"><div class="ic">🔥</div><b>Pengelasan dasar</b></div>
-      <div class="tile glass"><div class="ic">🚗</div><b>Dempul &amp; finishing</b></div>
-      <div class="tile glass"><div class="ic">🛠️</div><b>Alat kerja bengkel</b></div>
-      <div class="tile glass"><div class="ic">🤝</div><b>Pelayanan pelanggan</b></div>
-      <div class="tile glass"><div class="ic">👥</div><b>Kerja tim &amp; shift</b></div>
-      <div class="tile glass"><div class="ic">🧹</div><b>Disiplin &amp; teliti</b></div>
+      <div class="tile glass"><div class="ic">🔥</div><b>Las bodi &amp; rangka</b></div>
+      <div class="tile glass"><div class="ic">🚗</div><b>Dempul &amp; perbaikan bodi</b></div>
+      <div class="tile glass"><div class="ic">🔧</div><b>Bantu modifikasi kendaraan</b></div>
+      <div class="tile glass"><div class="ic">🍽️</div><b>Pelayanan &amp; pencatatan pesanan</b></div>
+      <div class="tile glass"><div class="ic">📦</div><b>Atur stok bahan</b></div>
+      <div class="tile glass"><div class="ic">🏭</div><b>Operator produksi (shift)</b></div>
     </div>
   </div>
 </div></section>
@@ -282,6 +331,8 @@ footer{text-align:center;padding:26px 20px;color:var(--muted);font-size:.82rem;b
 
 <a class="wa" href="https://wa.me/6283841104725" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 <div class="lb" id="lb"><img id="lbi" alt=""></div>
+<button class="fab" id="fab">🔒 Admin</button>
+<div id="toast"></div>
 
 <!-- PANEL ADMIN (tersembunyi) -->
 <div class="md" id="md"><div class="box">
@@ -396,9 +447,11 @@ $('y').textContent=new Date().getFullYear();
 /* ===== NAV & ANIMASI ===== */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){
   if(e.isIntersecting){e.target.classList.add('on');
-    if(e.target.querySelector('#stats'))statsOn();io.unobserve(e.target)}})},{threshold:.1});
+    if(e.target.querySelector('#stats'))statsOn();
+    e.target.querySelectorAll('.bar i').forEach(function(b){setTimeout(function(){b.style.width=b.dataset.w+'%'},150)});
+    io.unobserve(e.target)}})},{threshold:.1});
 document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
-var links=document.querySelectorAll('#pill a'),secs=['home','tentang','portofolio','kontak'];
+var links=document.querySelectorAll('#pill a'),secs=['home','tentang','skills','portofolio','kontak'];
 window.addEventListener('scroll',function(){
   var y=scrollY+140,cur=0;
   secs.forEach(function(id,i){if($(id).offsetTop<=y)cur=i});
@@ -480,7 +533,7 @@ $('prog').onclick=function(e){
 
 function render(){
   photos();grid('gGal','eGal','gal','galeri');grid('gCert','eCert','cert','sertifikat');
-  musicRender();statsUpd()}
+  musicRender();statsUpd();admUI()}
 fetch('data.json?'+Date.now()).then(function(r){return r.ok?r.json():null}).catch(function(){return null})
 .then(function(d){if(d){for(var k in d)DATA[k]=d[k]}render()});
 
@@ -563,7 +616,10 @@ function fileB64(file){
   return new Promise(function(res,rej){var r=new FileReader();
     r.onload=function(){res(String(r.result).split(',')[1])};r.onerror=function(){rej(new Error('File tidak bisa dibaca'))};
     r.readAsDataURL(file)})}
-function st(m,cls){var e=$('st');e.textContent=m;e.className=cls||''}
+function st(m,cls){var e=$('st');e.textContent=m;e.className=cls||'';
+  var t=$('toast');t.textContent=m;t.style.display='block';
+  t.style.color=cls==='er'?'#ff7b7f':(cls==='ok'?'#3ddc84':'#eaf0ff');
+  clearTimeout(window._tt);if(cls)window._tt=setTimeout(function(){t.style.display='none'},4500)}
 
 async function upSingle(file,path,key,label){
   try{st('Mengunggah '+label+'...');
@@ -573,11 +629,13 @@ async function upSingle(file,path,key,label){
   catch(e){st(e.message,'er')}}
 async function upMany(files,folder,key,capId){
   try{
+    var cap=$(capId).value.trim();
+    if(!cap){var pr=prompt('Keterangan foto (boleh dikosongkan)');cap=(pr||'').trim()}
     for(var i=0;i<files.length;i++){
       st('Mengunggah '+(i+1)+' dari '+files.length+'...');
       var b=await toB64(files[i],folder==='sertifikat'?1600:1280,false,.85),name='i'+Date.now()+'_'+i+'.jpg';
       await putFile(folder+'/'+name,b,'Tambah '+folder);
-      DATA[key].push({f:name,c:$(capId).value.trim()})}
+      DATA[key].push({f:name,c:cap})}
     await saveData();render();$(capId).value='';
     st('Berhasil. Pengunjung melihatnya dalam 1-2 menit.','ok')}
   catch(e){st(e.message,'er')}}
@@ -586,10 +644,12 @@ async function upMusic(file){
     if(file.size>8*1024*1024)throw new Error('File terlalu besar (maks 8 MB)');
     var ext=(file.name.split('.').pop()||'mp3').toLowerCase();
     if(['mp3','m4a','ogg','wav'].indexOf(ext)<0)throw new Error('Format harus mp3, m4a, ogg, atau wav');
+    var ti=$('capM').value.trim();
+    if(!ti){var pr=prompt('Judul lagu',file.name.replace(/\.[^.]+$/,''));ti=(pr||'').trim()}
     st('Mengunggah lagu...');
     var name='m'+Date.now()+'.'+ext;
     await putFile('musik/'+name,await fileB64(file),'Tambah lagu');
-    DATA.mus.push({f:name,t:$('capM').value.trim()||file.name.replace(/\.[^.]+$/,'')});
+    DATA.mus.push({f:name,t:ti||file.name.replace(/\.[^.]+$/,'')});
     await saveData();render();$('capM').value='';
     st('Lagu berhasil ditambah. Pengunjung mendengarnya dalam 1-2 menit.','ok')}
   catch(e){st(e.message,'er')}}
@@ -636,6 +696,15 @@ bind('bCert','fCert',function(f){upMany(f,'sertifikat','cert','capC')});
 bind('bMus','fMus',function(f){upMusic(f[0])});
 $('bRes').onclick=function(){if(confirm('Hapus token dari HP ini?')){localStorage.removeItem('gh_cfg');view()}};
 $('bOut').onclick=function(){sessionStorage.removeItem('adm');closeAdmin();render()};
+function admUI(){document.body.classList.toggle('isadm',ADM());$('fab').textContent=ADM()?'📤 Panel':'🔒 Admin'}
+function needCfg(){if(!ADM()||!cfg()){openAdmin();return false}return true}
+$('fab').onclick=openAdmin;
+$('aG').onclick=function(){if(needCfg())$('fGal').click()};
+$('aC').onclick=function(){if(needCfg())$('fCert').click()};
+$('aM').onclick=function(){if(needCfg())$('fMus').click()};
+$('aP').onclick=function(){if(needCfg())$('fProf').click()};
+$('aP2').onclick=function(){if(needCfg())$('fFoto2').click()};
+admUI();
 var taps=0,tt;
 $('cp').onclick=function(){taps++;clearTimeout(tt);tt=setTimeout(function(){taps=0},1800);if(taps>=5){taps=0;openAdmin()}};
 if(location.hash==='#admin')openAdmin();
